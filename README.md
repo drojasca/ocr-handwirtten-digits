@@ -1,4 +1,7 @@
 # OCR Hand-Written Digits 
+![alt text](https://github.com/drojasca/ocr-handwirtten-digits/blob/master/img/handwrittingTest1.png)
+orignal image used for detection from http://hanzratech.in/2015/02/24/handwritten-digit-recognition-using-opencv-sklearn-and-python.html
+
 ## Daniel Rojas
 ---------------------------------------------------------
 # DESCRIPTION
@@ -23,7 +26,7 @@ The annotated image is then sent and displayed in RQT using
 ## Initial Setup:
   1) Install Dependices listed above
   2) Download repository
-  3) Using the terminal, go to the `catkin_ws` folder in the project and enter the following command: `catkin_make`
+  3) Using the terminal, go to the `ocr-handwirtten-digits/catkin_ws/` folder in the project and enter the following command: `catkin_make`
   4) Run the following commands to install rqt_image_view dependencies:<br />
     `cd src/visualize/`<br />
     `sudo python setup.py install`<br />
@@ -32,7 +35,7 @@ The annotated image is then sent and displayed in RQT using
     `chmod +x startup.sh` <br />
     
   ## Running Detector
-   1) Go to root directory of project
+   1) Go to `ocr-handwirtten-digits/`
    2) Run the following command to run all ROS node: `./startup.sh`<br />
    3) Wait for RQT to open
    4) Once open, paste the image path into the bottom pane and press `enter`
@@ -41,13 +44,13 @@ The annotated image is then sent and displayed in RQT using
    7) Once finished run `Ctrl + z` and then `tmux kill-server`
     
  ## Training Detector
-  1) Obtain the [MNIST data set](http://yann.lecun.com/exdb/mnist/) in png form.
-  2) the folders in the training set must be named after the digit they contain
-  2) Open `svm_detector.cpp` in `ocr/catkin_ws/src/visualize/src/`
+  1) Obtain the [MNIST data set](http://yann.lecun.com/exdb/mnist/) in jpg form.
+  2) the folders in the training set must be named after the digit they contain (note, do not have `/` at the end of path)
+  2) Open `svm_detector.cpp` in `ocr-handwirtten-digits/catkin_ws/src/visualize/src/`
   3) Change the value of the `TRAINING_PATH` variale to the folder path
-  4) Delete `hand_written_detector.yml` in `ocr/catkin_ws/`
-  5) Run `catkin_make` from` ocr/catkin_ws/
-  6) The run the following Commands: <br />
+  4) Delete `hand_written_detector.yml` in `ocr-handwirtten-digits/catkin_ws`
+  5) Run `catkin_make` from `ocr-handwirtten-digits/catkin_ws`
+  6) Then run the following Commands: <br />
     `cd ../` <br />
     `./startup.sh` <br />
   7) Wait for the top pane to output `DETECTOR READY`
@@ -65,7 +68,14 @@ The SVM detector is trained by using the [MNIST data set](http://yann.lecun.com/
 
 For detection, once a valid file path is found, the image is the risized if it is too big, and then the contours of the image are found and dialated. The SVM has no way of discriminating between a digit and a non-digit, therefore, the background of the image has to be plain.
 
+![alt text](https://github.com/drojasca/ocr-handwirtten-digits/blob/master/img/contours.png)
+
+<br />
+
+
 Once the contours are found, a bounding box is then used to crop out the contour and apply the same preprocess as the training data. The processed image is then passed to the SVM that will output a prediction. The image will then be annoted and send to RQT for display.
+
+![alt text](https://github.com/drojasca/ocr-handwirtten-digits/blob/master/img/test3.png)
 
 ---------------------------------------------------------
 # ACKNOWLEDGMENTS:
