@@ -1,0 +1,36 @@
+image moments:
+    Image Moment is a particular weighted average of image pixel intensities
+
+Support Vector Machines:
+    supervised machine learning model
+    binary classifier, it is or it is not
+    - the hyperplane (line in 2d) that seperates the tags is known as the decision boundary
+    - maximize the margin between data and hyperplane
+    - C: Tradeoff between  reducing margin but more accuratley prediciting
+    - Gamma: Convert no linear data into linear using the Kernel trick (Radial Basis Function)
+        - adding a dimension
+        - how much the data is stretched in the third dimension, need to pick just the right value
+    - support vectors are data points close to the plane
+
+Histogram of oriented gradients:
+    - used in object detection
+    - The technique counts occurrences of gradient orientation (edge directions) in localized portions of an image
+    - image is divided into cells
+    - histogram of gradient direction is calculated in each cell
+    - cv::sobel:
+        - calculate the gradient of the image
+        - the greater the change in gradient of the image, the greate the change in the image
+    - its an array where each index corresponds direction and value is magnitude
+
+deskew:
+    - preproccessing the image
+    - get rid of slants
+
+ColorSpaces:
+    - RGB
+        It is an additive colorspace where colors are obtained by a linear combination of Red, Green, and Blue values.
+        The three channels are correlated by the amount of light hitting the surface.
+    - HSV: Hue (Dominant WaveLength), Saturation (Purity/shade of colour), Value (Intensity) 
+        Only one channel
+        Good under differnt lighting
+        http://hanzratech.in/2015/02/24/handwritten-digit-recognition-using-opencv-sklearn-and-python.html
