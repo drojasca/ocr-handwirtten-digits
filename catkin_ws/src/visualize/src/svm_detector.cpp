@@ -14,7 +14,7 @@ const int SZ = 20;
 const cv::Size Image_Size(28, 28);
 const auto affineFlags = cv::WARP_INVERSE_MAP|cv::INTER_LINEAR;
 cv::Ptr<cv::ml::SVM> svms;
-const std::string TRAINING_PATH = "/home/danie/Documents/projects/textReader/trainingSet";
+const std::string TRAINING_PATH;
 
 image_transport::Publisher pub;
 
