@@ -17,29 +17,31 @@ The annotated image is then sent and displayed in RQT using
 
 ---------------------------------------------------------
 # DEPENDENCIES
-- ROS : http://wiki.ros.org/melodic/Installation/Ubuntu
+- ROS : http://wiki.ros.org/melodic/Installation/Ubuntu (install recommended, follow all steps)
 - OpenCV : installed with ROS.
-- RQT: http://wiki.ros.org/rqt/UserGuide/Install/Groovy
+- RQT: installed with ROS.
 ---------------------------------------------------------
 # USAGE
 
 ## Initial Setup:
-  1) Install Dependices listed above
-  2) Download repository
-  3) Using the terminal, go to the `ocr-handwirtten-digits/catkin_ws/` folder in the project and enter the following command: `catkin_make`
-  4) Run the following commands to install rqt_image_view dependencies:<br />
+  1) Install Tmux using the follwing command: `sudo apt-get install tmux'
+  2) Install Dependices listed above
+  3) Download repository
+  4) Using the terminal, go to the `ocr-handwirtten-digits/catkin_ws/` folder in the project and enter the following command: `catkin_make`
+  5) Run the following commands to install rqt_image_view dependencies:<br />
     `cd src/visualize/`<br />
     `sudo python setup.py install`<br />
-  5) Once the dependices are installed run the following commands to allow the startup script to run and open all ROS nodes:    <br />
-    `cd ../../` <br />
+  6) Once the dependices are installed run the following commands to allow the startup script to run and open all ROS nodes:    <br />
+    `cd ../../../` <br />
     `chmod +x startup.sh` <br />
     
   ## Running Detector
+  ** Note, the image cannot be rotated and the digits need to be sufficiently spaced**
    1) Go to `ocr-handwirtten-digits/`
    2) Run the following command to run all ROS node: `./startup.sh`<br />
    3) Wait for RQT to open
    4) Once open, paste the image path into the bottom pane and press `enter`
-   5) The annotated image will show up in RQT once the the detection is run
+   5) The annotated image will show up in RQT once the the detection is run (Make sure to change the option at the top leftt beside the refresh button to /postImage)
    6) Repeate steps 4-5
    7) Once finished run `Ctrl + z` and then `tmux kill-server`
     
@@ -79,13 +81,13 @@ Once the contours are found, a bounding box is then used to crop out the contour
 
 ---------------------------------------------------------
 # ACKNOWLEDGMENTS:
-  - How to deskew and image
+  - How to deskew an image
     https://docs.opencv.org/4.2.0/dd/d3b/tutorial_py_svm_opencv.html
   
-  - How to Contour and image
+  - How to Contour an image
     https://www.hackevolve.com/recognize-handwritten-digits-1/
     
-  - How to convert Vector to Matrix
+  - How to convert vector to matrix
     https://github.com/ahmetozlu/vehicle_counting_hog_svm/blob/master/src/Main.cpp
     
   - RQT image view
