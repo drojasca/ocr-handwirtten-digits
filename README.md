@@ -24,7 +24,7 @@ The annotated image is then sent and displayed in RQT using
 # USAGE
 
 ## Initial Setup:
-  1) Install Tmux using the follwing command: `sudo apt-get install tmux'
+  1) Install Tmux using the follwing command: `sudo apt-get install tmux`
   2) Install Dependices listed above
   3) Download repository
   4) Using the terminal, go to the `ocr-handwirtten-digits/catkin_ws/` folder in the project and enter the following command: `catkin_make`
